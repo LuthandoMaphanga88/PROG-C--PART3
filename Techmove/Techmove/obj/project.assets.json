@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lab_services_student\\source\\repos\\Techmove\\Techmove\\Techmove.csproj",
+      "projectUniqueName": "C:\\Users\\lab_services_student\\source\\repos\\EMGPPT\\prog7311-g3-2026-part-2-LuthandoMaphanga88\\Techmove\\Techmove\\Techmove.csproj",
       "projectName": "Techmove",
-      "projectPath": "C:\\Users\\lab_services_student\\source\\repos\\Techmove\\Techmove\\Techmove.csproj",
+      "projectPath": "C:\\Users\\lab_services_student\\source\\repos\\EMGPPT\\prog7311-g3-2026-part-2-LuthandoMaphanga88\\Techmove\\Techmove\\Techmove.csproj",
       "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lab_services_student\\source\\repos\\Techmove\\Techmove\\obj\\",
+      "outputPath": "C:\\Users\\lab_services_student\\source\\repos\\EMGPPT\\prog7311-g3-2026-part-2-LuthandoMaphanga88\\Techmove\\Techmove\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
