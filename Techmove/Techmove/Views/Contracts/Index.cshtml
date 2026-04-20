@@ -1,0 +1,67 @@
+@model IEnumerable<ContractViewModel>
+@{
+    ViewData["Title"] = "Contracts";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Contract Management Hub</h1>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-action="Search">Search/Filter Contracts</a>
+        <a class="btn btn-primary" asp-action="Create">Create Contract</a>
+    </div>
+</div>
+
+<div class="panel-card">
+    @if (!Model.Any())
+    {
+        <p class="mb-0">No contracts yet. Create contracts from your own client data.</p>
+    }
+    else
+    {
+    <table class="table glms-table mb-0">
+        <thead>
+            <tr>
+                <th>Contract ID</th>
+                <th>Client</th>
+                <th>Period</th>
+                <th>Status</th>
+                <th>Service Level</th>
+                <th>Signed Agreement</th>
+                <th>Client Returned Agreement</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var contract in Model)
+        {
+            <tr>
+                <td>CT-@contract.Id</td>
+                <td>@contract.ClientName</td>
+                <td>@contract.StartDate.ToString("dd MMM yyyy") - @contract.EndDate.ToString("dd MMM yyyy")</td>
+                <td><span class="badge text-bg-light border">@contract.Status</span></td>
+                <td>@contract.ServiceLevel</td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(contract.AgreementFileName))
+                    {
+                        <a href="~/uploads/@contract.AgreementFileName" class="text-decoration-none" target="_blank">@contract.AgreementFileName</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">No file</span>
+                    }
+                </td>
+                <td>
+                    @if (!string.IsNullOrWhiteSpace(contract.ClientReturnedAgreementFileName))
+                    {
+                        <a href="~/uploads/@contract.ClientReturnedAgreementFileName" class="text-decoration-none" target="_blank">@contract.ClientReturnedAgreementFileName</a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Not returned yet</span>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    }
+</div>

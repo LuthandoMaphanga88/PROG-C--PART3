@@ -1,0 +1,23 @@
+[
+  {
+    "ContainingType": "Techmove.Controllers.ExchangeRatesController",
+    "Method": "Get",
+    "RelativePath": "api/exchange-rates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "baseCurrency",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "targets",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

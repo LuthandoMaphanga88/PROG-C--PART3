@@ -1,0 +1,30 @@
+﻿
+
+CREATE TABLE Clients (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(200) NOT NULL,
+    ContactDetails NVARCHAR(500) NOT NULL,
+    Region NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Contracts (
+    Id INT IDENTITY(100,1) PRIMARY KEY,
+    ClientName NVARCHAR(200) NOT NULL,
+    StartDate DATETIME2 NOT NULL,
+    EndDate DATETIME2 NOT NULL,
+    Status NVARCHAR(100) NOT NULL,
+    ServiceLevel NVARCHAR(100) NOT NULL,
+    AgreementFileName NVARCHAR(260) NOT NULL,
+    AgreementContentType NVARCHAR(100) NOT NULL DEFAULT 'application/pdf',
+    AgreementPdf VARBINARY(MAX) NOT NULL
+);
+
+
+CREATE TABLE ServiceRequests (
+    Id INT IDENTITY(500,1) PRIMARY KEY,
+    ContractRef NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(MAX) NOT NULL,
+    CostUsd DECIMAL(18,2) NOT NULL,
+    CostZar DECIMAL(18,2) NOT NULL,
+    Status NVARCHAR(100) NOT NULL
+);

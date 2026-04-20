@@ -1,0 +1,95 @@
+@model ContractSearchViewModel
+@{
+    ViewData["Title"] = "Search Contracts";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Contracts Search Filter</h1>
+    <a class="btn btn-outline-primary" asp-action="Index">Back to Contracts</a>
+</div>
+
+<div class="panel-card mb-3">
+    <form method="get" class="row g-3 align-items-end">
+        <div class="col-md-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" value="@Model.Name" placeholder="Client, service level, or CT-ID" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Client</label>
+            <select class="form-select" name="client">
+                <option value="">All clients</option>
+                @foreach (var clientOption in Model.ClientOptions)
+                {
+                    <option value="@clientOption" selected="@(Model.Client == clientOption)">@clientOption</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Start Date</label>
+            <input type="date" class="form-control" name="startDate" value="@Model.StartDate?.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">End Date</label>
+            <input type="date" class="form-control" name="endDate" value="@Model.EndDate?.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="col-md-2 d-flex gap-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+            <a asp-action="Search" class="btn btn-outline-secondary w-100">Clear</a>
+        </div>
+    </form>
+</div>
+
+<div class="panel-card">
+    @if (!Model.Results.Any())
+    {
+        <p class="mb-0">No contracts match the selected filters.</p>
+    }
+    else
+    {
+        <table class="table glms-table mb-0">
+            <thead>
+                <tr>
+                    <th>Contract ID</th>
+                    <th>Client</th>
+                    <th>Period</th>
+                    <th>Status</th>
+                    <th>Service Level</th>
+                    <th>Sent Agreement</th>
+                    <th>Returned Agreement</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var contract in Model.Results)
+            {
+                <tr>
+                    <td>CT-@contract.Id</td>
+                    <td>@contract.ClientName</td>
+                    <td>@contract.StartDate.ToString("dd MMM yyyy") - @contract.EndDate.ToString("dd MMM yyyy")</td>
+                    <td><span class="badge text-bg-light border">@contract.Status</span></td>
+                    <td>@contract.ServiceLevel</td>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(contract.AgreementFileName))
+                        {
+                            <a href="~/uploads/@contract.AgreementFileName" target="_blank">@contract.AgreementFileName</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Not sent</span>
+                        }
+                    </td>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(contract.ClientReturnedAgreementFileName))
+                        {
+                            <a href="~/uploads/@contract.ClientReturnedAgreementFileName" target="_blank">@contract.ClientReturnedAgreementFileName</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Not returned</span>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>

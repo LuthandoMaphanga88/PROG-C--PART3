@@ -1,0 +1,40 @@
+@model ClientViewModel
+@{
+    ViewData["Title"] = "Add Client";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Register New Client</h1>
+    <form asp-action="Create" method="post">
+        @Html.AntiForgeryToken()
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="AccountUsername" class="form-label">Linked Login Username (Optional)</label>
+                <input asp-for="AccountUsername" class="form-control" placeholder="e.g. client" />
+                <small class="text-muted">Use this to link this record with a client's My Information profile.</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Client Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter client name" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Region</label>
+                <select asp-for="Region" class="form-select">
+                    <option value="">Select region</option>
+                    <option>Africa</option>
+                    <option>Europe</option>
+                    <option>North America</option>
+                    <option>Asia Pacific</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Contact Details</label>
+                <input asp-for="ContactDetails" class="form-control" placeholder="Email and phone number" />
+            </div>
+        </div>
+        <div class="mt-4 d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Save Client</button>
+            <a class="btn btn-outline-primary" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,61 @@
+@model ContractViewModel
+@{
+    ViewData["Title"] = "Create Contract";
+    var clients = ViewBag.Clients as IReadOnlyList<ClientViewModel> ?? [];
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Create Contract</h1>
+    @if (!clients.Any())
+    {
+        <div class="alert alert-warning mb-3">Create at least one client before creating a contract.</div>
+    }
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Client</label>
+                <select asp-for="ClientName" class="form-select">
+                    <option value="">Select client</option>
+                    @foreach (var client in clients)
+                    {
+                        <option value="@client.Name">@client.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Service Level</label>
+                <select asp-for="ServiceLevel" class="form-select">
+                    <option>Gold SLA</option>
+                    <option>Silver SLA</option>
+                    <option>Bronze SLA</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Start Date</label>
+                <input asp-for="StartDate" type="date" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">End Date</label>
+                <input asp-for="EndDate" type="date" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Status</label>
+                <select asp-for="Status" class="form-select">
+                    <option>Draft</option>
+                    <option>Active</option>
+                    <option>Expired</option>
+                    <option>On Hold</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label class="form-label">Upload Signed Agreement (PDF)</label>
+                <input type="file" class="form-control" accept=".pdf" name="signedAgreement" />
+            </div>
+        </div>
+        <div class="mt-4 d-flex gap-2">
+            <button class="btn btn-primary" type="submit" disabled="@(!clients.Any())">Save Contract</button>
+            <a class="btn btn-outline-primary" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>

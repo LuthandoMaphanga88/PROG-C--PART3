@@ -1,0 +1,61 @@
+﻿@model DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="glms-hero mb-4">
+    <h1 class="mb-2">Global Logistics Management System</h1>
+    <p class="mb-0">
+        Centralise contracts, clients, and service requests in one enterprise-ready portal.
+    </p>
+</section>
+
+<section class="row g-3 mb-4">
+    <div class="col-md-6 col-xl-3">
+        <div class="metric-card">
+            <h2>@Model.TotalClients</h2>
+            <p>Total Clients</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="metric-card">
+            <h2>@Model.ActiveContracts</h2>
+            <p>Active Contracts</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="metric-card">
+            <h2>@Model.OpenServiceRequests</h2>
+            <p>Open Service Requests</p>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="metric-card">
+            <h2>@Model.ExpiringContracts</h2>
+            <p>Expiring This Month</p>
+        </div>
+    </div>
+</section>
+
+<section class="panel-card">
+    <h3>Quick Actions</h3>
+    @if (Model.TotalClients == 0 && Model.ActiveContracts == 0 && Model.OpenServiceRequests == 0)
+    {
+        <p class="mt-2 mb-0">Dashboard values are now driven by records you create in this session.</p>
+    }
+    <div class="d-flex flex-wrap gap-2 mt-3">
+        @if (User.IsInRole("Client"))
+        {
+            <a class="btn btn-primary" asp-controller="ClientProfile" asp-action="Edit">My Information</a>
+            <a class="btn btn-primary" asp-controller="Contracts" asp-action="MyContracts">My Contracts</a>
+            <a class="btn btn-primary" asp-controller="ServiceRequests" asp-action="Create">Raise Service Request</a>
+        }
+        else
+        {
+            <a class="btn btn-primary" asp-controller="Clients" asp-action="Create">Add Client</a>
+            <a class="btn btn-primary" asp-controller="Contracts" asp-action="Create">Create Contract</a>
+            <a class="btn btn-primary" asp-controller="Contracts" asp-action="Search">Search/Filter Contracts</a>
+            <a class="btn btn-primary" asp-controller="ServiceRequests" asp-action="Create">Raise Service Request</a>
+        }
+    </div>
+</section>

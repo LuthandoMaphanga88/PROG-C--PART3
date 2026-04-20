@@ -1,0 +1,51 @@
+@model ClientViewModel
+@{
+    ViewData["Title"] = "My Information";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">My Information</h1>
+
+    @if (TempData["ProfileSaved"] is string message)
+    {
+        <div class="alert alert-success">@message</div>
+    }
+
+    <form asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label asp-for="Name" class="form-label">Full Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Enter your full name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="Region" class="form-label">Region</label>
+                <select asp-for="Region" class="form-select">
+                    <option value="">Select region</option>
+                    <option>Africa</option>
+                    <option>Europe</option>
+                    <option>North America</option>
+                    <option>Asia Pacific</option>
+                </select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="col-12">
+                <label asp-for="ContactDetails" class="form-label">Contact Details</label>
+                <input asp-for="ContactDetails" class="form-control" placeholder="Email and phone number" />
+                <span asp-validation-for="ContactDetails" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-4 d-flex gap-2">
+            <button class="btn btn-primary" type="submit">Save My Information</button>
+            <a class="btn btn-outline-primary" asp-controller="Home" asp-action="Index">Back</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

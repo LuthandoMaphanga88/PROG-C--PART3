@@ -1,0 +1,40 @@
+@model IEnumerable<ClientViewModel>
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Client Management</h1>
+    <a class="btn btn-primary" asp-action="Create">Add Client</a>
+</div>
+
+<div class="panel-card">
+    @if (!Model.Any())
+    {
+        <p class="mb-0">No clients yet. Add your first client to start building live data.</p>
+    }
+    else
+    {
+    <table class="table glms-table mb-0">
+        <thead>
+            <tr>
+                <th>Linked Username</th>
+                <th>Client Name</th>
+                <th>Contact Details</th>
+                <th>Region</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@(string.IsNullOrWhiteSpace(client.AccountUsername) ? "-" : client.AccountUsername)</td>
+                <td>@client.Name</td>
+                <td>@client.ContactDetails</td>
+                <td>@client.Region</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    }
+</div>

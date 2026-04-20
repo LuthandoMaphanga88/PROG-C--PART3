@@ -1,0 +1,74 @@
+@model IReadOnlyList<ContractViewModel>
+@{
+    ViewData["Title"] = "My Contracts";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">My Contracts</h1>
+</div>
+
+<div class="panel-card">
+    @if (TempData["ContractUploadSuccess"] is string success)
+    {
+        <div class="alert alert-success">@success</div>
+    }
+    @if (TempData["ContractUploadError"] is string error)
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+
+    @if (!Model.Any())
+    {
+        <p class="mb-0">No contracts are assigned to your account yet.</p>
+    }
+    else
+    {
+        <table class="table glms-table mb-0">
+            <thead>
+                <tr>
+                    <th>Contract ID</th>
+                    <th>Period</th>
+                    <th>Status</th>
+                    <th>Service Level</th>
+                    <th>Agreement From Admin</th>
+                    <th>Return Signed Contract</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var contract in Model)
+            {
+                <tr>
+                    <td>CT-@contract.Id</td>
+                    <td>@contract.StartDate.ToString("dd MMM yyyy") - @contract.EndDate.ToString("dd MMM yyyy")</td>
+                    <td><span class="badge text-bg-light border">@contract.Status</span></td>
+                    <td>@contract.ServiceLevel</td>
+                    <td>
+                        @if (!string.IsNullOrWhiteSpace(contract.AgreementFileName))
+                        {
+                            <a href="~/uploads/@contract.AgreementFileName" target="_blank">@contract.AgreementFileName</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">No file shared yet</span>
+                        }
+                    </td>
+                    <td>
+                        <form asp-action="UploadReturnedAgreement" method="post" enctype="multipart/form-data" class="d-flex gap-2 align-items-center">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="contractId" value="@contract.Id" />
+                            <input type="file" name="returnedAgreement" class="form-control form-control-sm" accept=".pdf,.doc,.docx" />
+                            <button class="btn btn-sm btn-primary" type="submit">Send Back</button>
+                        </form>
+                        @if (!string.IsNullOrWhiteSpace(contract.ClientReturnedAgreementFileName))
+                        {
+                            <small class="d-block mt-1">
+                                Submitted: <a href="~/uploads/@contract.ClientReturnedAgreementFileName" target="_blank">@contract.ClientReturnedAgreementFileName</a>
+                            </small>
+                        }
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
