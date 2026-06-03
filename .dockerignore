@@ -1,0 +1,13 @@
+**/.git
+**/.gitignore
+**/.vs
+**/bin
+**/obj
+**/.DS_Store
+**/node_modules
+**/*.user
+**/*.suo
+**/dist
+**/.env
+**/.env.local
+**/.vscode

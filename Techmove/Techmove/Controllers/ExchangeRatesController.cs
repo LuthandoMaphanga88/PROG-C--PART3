@@ -7,7 +7,7 @@ namespace Techmove.Controllers;
 [ApiController]
 [Route("api/exchange-rates")]
 [Authorize]
-public class ExchangeRatesController : ControllerBase
+public class ExchangeRatesController : ControllerBase //ExchangeRateApi (2026)
 {
     private readonly IExchangeRateService _exchangeRateService;
 
@@ -32,3 +32,5 @@ public class ExchangeRatesController : ControllerBase
         });
     }
 }
+//References:
+//ExchangeRateApi (2026) Exchange Rates API. Available at: https://www.exchangerate-api.com/

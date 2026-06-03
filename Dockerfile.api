@@ -1,0 +1,25 @@
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+# Copy entire project structure
+COPY . .
+
+# Restore and build API
+RUN dotnet restore Techmove.API/Techmove.API.csproj && \
+    dotnet build Techmove.API/Techmove.API.csproj -c Release -o /app/build
+
+# Publish stage
+FROM build AS publish
+RUN dotnet publish Techmove.API/Techmove.API.csproj -c Release -o /app/publish
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+EXPOSE 7053
+ENV ASPNETCORE_URLS=http://+:7053
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+ENTRYPOINT ["dotnet", "Techmove.API.dll"]

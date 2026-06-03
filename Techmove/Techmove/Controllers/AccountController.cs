@@ -10,12 +10,12 @@ namespace Techmove.Controllers;
 
 public class AccountController : Controller
 {
-    private readonly InMemoryUserStore _userStore;
+    private readonly InMemoryUserStore _userStore; //Microsoft (2023) 
 
     public AccountController(InMemoryUserStore userStore)
     {
         _userStore = userStore;
-    }
+    } 
 
     [AllowAnonymous]
     public IActionResult Login(string? returnUrl = null)
@@ -70,3 +70,5 @@ public class AccountController : Controller
         return RedirectToAction(nameof(Login));
     }
 }
+//Reference List:
+//Microsoft (2023) Cache in-memory in ASP.NET Core. Available at: https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory?view=aspnetcore-10.0 

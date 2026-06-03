@@ -1,0 +1,32 @@
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+# Copy solution and project files
+COPY Techmove.slnx .
+COPY Techmove/Techmove/Techmove.csproj ./Techmove/Techmove/
+
+# Restore dependencies
+RUN dotnet restore Techmove/Techmove/Techmove.csproj
+
+# Copy source code
+COPY Techmove/ ./Techmove/
+
+# Build the web app
+WORKDIR /src/Techmove/Techmove
+RUN dotnet build -c Release -o /app/build
+
+# Publish stage
+FROM build AS publish
+RUN dotnet publish -c Release -o /app/publish
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+EXPOSE 7054
+ENV ASPNETCORE_URLS=http://+:7054
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+ENTRYPOINT ["dotnet", "Techmove.dll"]

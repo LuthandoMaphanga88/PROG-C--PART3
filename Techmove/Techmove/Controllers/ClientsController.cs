@@ -1,40 +1,43 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Techmove.Models;
-using Techmove.Services;
+using Techmove.Services.Api;
 
 namespace Techmove.Controllers;
 
 [Authorize(Roles = "Admin")]
 public class ClientsController : Controller
 {
-    private readonly InMemoryDataStore _dataStore;
+    private readonly ITechmoveApiClient _apiClient;
 
-    public ClientsController(InMemoryDataStore dataStore)
+    public ClientsController(ITechmoveApiClient apiClient)
     {
-        _dataStore = dataStore;
+        _apiClient = apiClient;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
-        return View(_dataStore.Clients);
+        var clients = await _apiClient.GetClientsAsync(cancellationToken);
+        return View(clients);
     }
 
-    public IActionResult Create()
+    public IActionResult Create() //Microsoft (2024)
     {
         return View(new ClientViewModel());
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(ClientViewModel client)
+    public async Task<IActionResult> Create(ClientViewModel client, CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid)
         {
             return View(client);
         }
 
-        _dataStore.AddClient(client);
+        await _apiClient.SaveClientAsync(client, cancellationToken);
         return RedirectToAction(nameof(Index));
     }
 }
+//References:
+//Microsoft (2024) Tutorial: Implement CRUD functionality with ASP.NET Core. Available at: https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/validation 

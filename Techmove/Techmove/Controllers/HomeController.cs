@@ -2,28 +2,32 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Techmove.Models;
-using Techmove.Services;
+using Techmove.Services.Api;
 
 namespace Techmove.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
-        private readonly InMemoryDataStore _dataStore;
+        private readonly ITechmoveApiClient _apiClient;
 
-        public HomeController(InMemoryDataStore dataStore)
+        public HomeController(ITechmoveApiClient apiClient)
         {
-            _dataStore = dataStore;
+            _apiClient = apiClient;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
+            var clients = await _apiClient.GetClientsAsync(cancellationToken);
+            var contracts = await _apiClient.GetContractsAsync(cancellationToken);
+            var serviceRequests = await _apiClient.GetServiceRequestsAsync(cancellationToken);
+
             var dashboard = new DashboardViewModel
             {
-                TotalClients = _dataStore.Clients.Count,
-                ActiveContracts = _dataStore.Contracts.Count(c => c.Status == "Active"),
-                OpenServiceRequests = _dataStore.ServiceRequests.Count(r => r.Status is "Open" or "Pending Approval" or "In Progress"),
-                ExpiringContracts = _dataStore.Contracts.Count(c => c.EndDate >= DateTime.Today && c.EndDate <= DateTime.Today.AddDays(30))
+                TotalClients = clients.Count,
+                ActiveContracts = contracts.Count(c => c.Status == "Active"),
+                OpenServiceRequests = serviceRequests.Count(r => r.Status is "Open" or "Pending Approval" or "In Progress"),
+                ExpiringContracts = contracts.Count(c => c.EndDate >= DateTime.Today && c.EndDate <= DateTime.Today.AddDays(30))
             };
 
             return View(dashboard);

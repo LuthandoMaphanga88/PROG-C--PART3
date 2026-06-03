@@ -53,7 +53,6 @@ wwwroot\lib\jquery-validation\dist\additional-methods.js
 wwwroot\lib\jquery-validation\dist\additional-methods.min.js
 wwwroot\lib\jquery-validation\dist\jquery.validate.js
 wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
@@ -61,72 +60,82 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\06624fac8595464886e4aa1c895e7802.pdf
 wwwroot\uploads\1028ef49-2bb9-4ecb-8f0a-6724dbcf173b-ICE Task 3.pdf
+wwwroot\uploads\461eb3a5-a2cf-418b-920b-b55fbd726f78-ICE Task 3.pdf
+wwwroot\uploads\4a55fe6e-d7d2-4846-8281-5fdda4f5ad84-ICE Task 3.pdf
 wwwroot\uploads\4c75af20-40c8-4b52-91ab-a6e571a037c9-ICE Task 3.pdf
 wwwroot\uploads\79c32ffa-8e2e-4baf-a599-2db2d753fc06-ICE Task 3.pdf
 wwwroot\uploads\79da24b4-dcb7-4b8f-8fef-e5983804d66d-ICE Task 3.pdf
 wwwroot\uploads\8552a5b5-4248-41c2-8592-4b9919e30588-ICE Task 3.pdf
+wwwroot\uploads\9bba855ec361493683175ab00242961b.pdf
+wwwroot\uploads\ab12dbc5-3b28-4cb4-a133-90fe8934e465-ICE Task 3.pdf
+wwwroot\uploads\c7f020be-1627-4073-aa71-74d98f8db609-ICE Task 3.pdf
+wwwroot\uploads\cbfc3901-36e0-4125-b9cf-620d4befbd44-ICE Task 3.pdf
 wwwroot\uploads\dd85531a-e2d9-49db-8fad-d33c6effd97d-ICE Task 3.pdf
+wwwroot\uploads\e055c1cc-c979-4dd7-a674-73e6097bf0b7-ICE Task 3.pdf
 wwwroot\uploads\e94664bf-ea21-4cb9-b109-6fdac19ad31b-ICE Task 3.pdf
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\css\site.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\favicon.ico
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\js\site.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\additional-methods.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\jquery.validate.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery-validation\LICENSE.md
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.min.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.slim.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.slim.min.js
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.slim.min.map
-C:\Users\lab_services_student\source\repos\Techmove\Techmove\wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\eb242d14-3328-4014-a78b-cba5fcda2f96-ICE Task 3.pdf
+wwwroot\uploads\ecf9dab3200b4a56818f3b6bfcb28f24.pdf
+wwwroot\uploads\f59c3357-467e-4938-a2b7-6b2a2608f209-ICE Task 3.pdf
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\LICENSE.txt
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.slim.min.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.slim.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.slim.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.min.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery\dist\jquery.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation\dist\additional-methods.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\js\site.js
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\favicon.ico
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\css\site.css

@@ -1,3 +1,5 @@
+using Techmove.Services.Api;
+
 namespace Techmove
 {
     public class Program
@@ -8,9 +10,15 @@ namespace Techmove
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<Services.InMemoryDataStore>();
             builder.Services.AddSingleton<Services.InMemoryUserStore>();
             builder.Services.AddHttpClient<Services.IExchangeRateService, Services.ExchangeRateService>();
+            builder.Services.AddHttpClient<ITechmoveApiClient, TechmoveApiClient>(client =>
+            {
+                var baseUrl = builder.Configuration["TechmoveApi:BaseUrl"]
+                    ?? throw new InvalidOperationException("TechmoveApi:BaseUrl is not configured.");
+                client.BaseAddress = new Uri(baseUrl);
+            });
+
             builder.Services
                 .AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
