@@ -9,10 +9,12 @@ namespace Techmove.Controllers;
 public class ClientProfileController : Controller
 {
     private readonly ITechmoveApiClient _apiClient;
+    private readonly ILogger<ClientProfileController> _logger;
 
-    public ClientProfileController(ITechmoveApiClient apiClient)
+    public ClientProfileController(ITechmoveApiClient apiClient, ILogger<ClientProfileController> logger)
     {
         _apiClient = apiClient;
+        _logger = logger;
     }
 
     public async Task<IActionResult> Edit(CancellationToken cancellationToken) //Microsoft (2024)
@@ -53,9 +55,24 @@ public class ClientProfileController : Controller
             return RedirectToAction("Login", "Account");
         }
 
-        await _apiClient.SaveClientProfileAsync(username, model, cancellationToken);
-        TempData["ProfileSaved"] = "Your information has been saved.";
-        return RedirectToAction(nameof(Edit));
+        try
+        {
+            await _apiClient.SaveClientProfileAsync(username, model, cancellationToken);
+            TempData["ProfileSaved"] = "Your information has been saved.";
+            return RedirectToAction(nameof(Edit));
+        }
+        catch (TechmoveApiException ex)
+        {
+            _logger.LogWarning(ex, "Unable to save client profile for {Username}", username);
+            ModelState.AddModelError(string.Empty, ex.Message);
+            return View(model);
+        }
+        catch (HttpRequestException ex)
+        {
+            _logger.LogError(ex, "Unable to contact the Techmove API while saving profile for {Username}", username);
+            ModelState.AddModelError(string.Empty, "Your information could not be saved because the API is unavailable. Please try again.");
+            return View(model);
+        }
     }
 }
 //Reference list:

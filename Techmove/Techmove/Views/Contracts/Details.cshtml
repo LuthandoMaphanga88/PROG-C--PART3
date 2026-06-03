@@ -1,0 +1,46 @@
+@model ContractViewModel
+@{
+    ViewData["Title"] = "Contract Details";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Contract Details</h1>
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Contract ID</dt>
+        <dd class="col-sm-9">CT-@Model.Id</dd>
+        <dt class="col-sm-3">Client</dt>
+        <dd class="col-sm-9">@Model.ClientName</dd>
+        <dt class="col-sm-3">Period</dt>
+        <dd class="col-sm-9">@Model.StartDate.ToString("dd MMM yyyy") - @Model.EndDate.ToString("dd MMM yyyy")</dd>
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+        <dt class="col-sm-3">Service Level</dt>
+        <dd class="col-sm-9">@Model.ServiceLevel</dd>
+        <dt class="col-sm-3">Signed Agreement</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrWhiteSpace(Model.AgreementFileName))
+            {
+                <a href="~/uploads/@Model.AgreementFileName" target="_blank">@Model.AgreementFileName</a>
+            }
+            else
+            {
+                <span class="text-muted">No file</span>
+            }
+        </dd>
+        <dt class="col-sm-3">Returned Agreement</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrWhiteSpace(Model.ClientReturnedAgreementFileName))
+            {
+                <a href="~/uploads/@Model.ClientReturnedAgreementFileName" target="_blank">@Model.ClientReturnedAgreementFileName</a>
+            }
+            else
+            {
+                <span class="text-muted">Not returned yet</span>
+            }
+        </dd>
+    </dl>
+    <div class="mt-4 d-flex gap-2">
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-outline-primary" asp-action="Index">Back</a>
+    </div>
+</div>

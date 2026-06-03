@@ -142,6 +142,51 @@ public class ContractService : IContractService
     }
 
     /// <inheritdoc/>
+    public async Task<ContractDto?> UpdateContractAsync(int id, ContractDto contractDto)
+    {
+        try
+        {
+            var contract = await _context.Contracts
+                .Include(c => c.Client)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            if (contract is null)
+            {
+                _logger.LogWarning("Attempt to update non-existent contract with ID: {ContractId}", id);
+                return null;
+            }
+
+            var client = await ResolveClientAsync(contractDto);
+            if (client is null)
+            {
+                _logger.LogWarning("Attempt to update contract {ContractId} with an unknown client", id);
+                throw new InvalidOperationException("Client not found. Provide a valid clientId, clientName, or clientAccountUsername.");
+            }
+
+            contract.ClientId = client.Id;
+            contract.ClientName = client.Name;
+            contract.ClientAccountUsername = client.AccountUsername;
+            contract.StartDate = contractDto.StartDate;
+            contract.EndDate = contractDto.EndDate;
+            contract.Status = string.IsNullOrWhiteSpace(contractDto.Status) ? "Draft" : contractDto.Status.Trim();
+            contract.ServiceLevel = contractDto.ServiceLevel;
+            contract.AgreementFileName = contractDto.AgreementFileName;
+            contract.ClientReturnedAgreementFileName = contractDto.ClientReturnedAgreementFileName;
+            contract.ModifiedDate = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("Contract updated successfully with ID: {ContractId}", contract.Id);
+            return MapToContractDto(contract);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating contract with ID: {ContractId}", id);
+            throw;
+        }
+    }
+
+    /// <inheritdoc/>
     public async Task<ContractDto?> UpdateContractStatusAsync(int id, UpdateContractStatusDto statusDto)
     {
         try

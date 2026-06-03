@@ -1,0 +1,22 @@
+@model ClientViewModel
+@{
+    ViewData["Title"] = "Client Details";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Client Details</h1>
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Linked Username</dt>
+        <dd class="col-sm-9">@(string.IsNullOrWhiteSpace(Model.AccountUsername) ? "-" : Model.AccountUsername)</dd>
+        <dt class="col-sm-3">Client Name</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+        <dt class="col-sm-3">Contact Details</dt>
+        <dd class="col-sm-9">@Model.ContactDetails</dd>
+        <dt class="col-sm-3">Region</dt>
+        <dd class="col-sm-9">@Model.Region</dd>
+    </dl>
+    <div class="mt-4 d-flex gap-2">
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-outline-primary" asp-action="Index">Back</a>
+    </div>
+</div>

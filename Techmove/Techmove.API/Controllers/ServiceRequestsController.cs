@@ -29,6 +29,13 @@ public class ServiceRequestsController : ControllerBase
         return Ok(requests);
     }
 
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ServiceRequestDto>> GetServiceRequest(int id)
+    {
+        var request = await _context.ServiceRequests.FindAsync(id);
+        return request is null ? NotFound(new { message = "Service request not found." }) : Ok(MapToDto(request));
+    }
+
     [HttpPost]
     public async Task<ActionResult<ServiceRequestDto>> CreateServiceRequest(ServiceRequestDto dto)
     {
@@ -61,6 +68,56 @@ public class ServiceRequestsController : ControllerBase
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(nameof(GetServiceRequests), new { id = request.Id }, MapToDto(request));
+    }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ServiceRequestDto>> UpdateServiceRequest(int id, ServiceRequestDto dto)
+    {
+        var request = await _context.ServiceRequests.FindAsync(id);
+        if (request is null)
+        {
+            return NotFound(new { message = "Service request not found." });
+        }
+
+        var contract = await _context.Contracts.FirstOrDefaultAsync(c => c.Id == dto.ContractId);
+        if (contract is null)
+        {
+            return BadRequest(new { message = "Please select a valid contract." });
+        }
+
+        if (contract.Status is "Expired" or "On Hold")
+        {
+            return BadRequest(new { message = "A service request cannot be linked to Expired or On Hold contracts." });
+        }
+
+        request.ContractId = contract.Id;
+        request.ContractRef = string.IsNullOrWhiteSpace(dto.ContractRef)
+            ? $"CT-{contract.Id} - {contract.ClientName} ({contract.Status})"
+            : dto.ContractRef;
+        request.Description = dto.Description;
+        request.CostUsd = dto.CostUsd;
+        request.CostZar = dto.CostZar;
+        request.Status = dto.Status;
+        request.ModifiedDate = DateTime.UtcNow;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(MapToDto(request));
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteServiceRequest(int id)
+    {
+        var request = await _context.ServiceRequests.FindAsync(id);
+        if (request is null)
+        {
+            return NotFound(new { message = "Service request not found." });
+        }
+
+        _context.ServiceRequests.Remove(request);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
     }
 
     private static ServiceRequestDto MapToDto(ServiceRequest request)

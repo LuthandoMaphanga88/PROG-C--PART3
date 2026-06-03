@@ -9,6 +9,11 @@
 </div>
 
 <div class="panel-card">
+    @if (TempData["ServiceRequestError"] is string error)
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+
     @if (!Model.Requests.Any())
     {
         <p class="mb-0">No service requests yet. Raise requests from your active contracts.</p>
@@ -26,6 +31,7 @@
                 <th>Cost (EUR)</th>
                 <th>Cost (GBP)</th>
                 <th>Status</th>
+                <th class="text-end">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +46,13 @@
                 <td>€@((request.CostUsd * Model.EurRate).ToString("N2"))</td>
                 <td>£@((request.CostUsd * Model.GbpRate).ToString("N2"))</td>
                 <td>@request.Status</td>
+                <td class="text-end">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@request.Id">Details</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@request.Id">Edit</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@request.Id">Delete</a>
+                    </div>
+                </td>
             </tr>
         }
         </tbody>

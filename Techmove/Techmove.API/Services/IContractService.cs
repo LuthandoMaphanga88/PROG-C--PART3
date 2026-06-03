@@ -37,6 +37,14 @@ public interface IContractService
     Task<ContractDto> CreateContractAsync(ContractDto contractDto);
 
     /// <summary>
+    /// Update an existing contract.
+    /// </summary>
+    /// <param name="id">Contract ID</param>
+    /// <param name="contractDto">Updated contract data</param>
+    /// <returns>Updated contract</returns>
+    Task<ContractDto?> UpdateContractAsync(int id, ContractDto contractDto);
+
+    /// <summary>
     /// Update contract status (approve/decline).
     /// </summary>
     /// <param name="id">Contract ID</param>

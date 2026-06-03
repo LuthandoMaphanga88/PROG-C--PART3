@@ -1,0 +1,25 @@
+@model ClientViewModel
+@{
+    ViewData["Title"] = "Delete Client";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Delete Client</h1>
+    <div class="alert alert-warning">
+        Confirm that you want to delete @Model.Name. Clients with related contracts cannot be deleted.
+    </div>
+    <dl class="row">
+        <dt class="col-sm-3">Linked Username</dt>
+        <dd class="col-sm-9">@(string.IsNullOrWhiteSpace(Model.AccountUsername) ? "-" : Model.AccountUsername)</dd>
+        <dt class="col-sm-3">Contact Details</dt>
+        <dd class="col-sm-9">@Model.ContactDetails</dd>
+        <dt class="col-sm-3">Region</dt>
+        <dd class="col-sm-9">@Model.Region</dd>
+    </dl>
+    <form asp-action="Delete" method="post" class="d-flex gap-2">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-outline-primary" asp-action="Index">Cancel</a>
+    </form>
+</div>

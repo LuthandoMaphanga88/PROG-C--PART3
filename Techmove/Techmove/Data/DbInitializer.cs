@@ -20,9 +20,18 @@ public static class DbInitializer
             try
             {
                 var context = services.GetRequiredService<AppDbContext>();
+                var environment = services.GetRequiredService<IWebHostEnvironment>();
 
-                // Apply pending migrations
-                context.Database.Migrate();
+                if (environment.IsDevelopment() && !context.Database.CanConnect())
+                {
+                    context.Database.EnsureCreated();
+                    return;
+                }
+
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    context.Database.Migrate();
+                }
             }
             catch (Exception ex)
             {

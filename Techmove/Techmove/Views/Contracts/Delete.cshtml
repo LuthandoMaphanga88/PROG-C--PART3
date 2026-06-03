@@ -1,0 +1,25 @@
+@model ContractViewModel
+@{
+    ViewData["Title"] = "Delete Contract";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Delete Contract</h1>
+    <div class="alert alert-warning">
+        Confirm that you want to delete contract CT-@Model.Id for @Model.ClientName. Contracts with related service requests cannot be deleted.
+    </div>
+    <dl class="row">
+        <dt class="col-sm-3">Period</dt>
+        <dd class="col-sm-9">@Model.StartDate.ToString("dd MMM yyyy") - @Model.EndDate.ToString("dd MMM yyyy")</dd>
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+        <dt class="col-sm-3">Service Level</dt>
+        <dd class="col-sm-9">@Model.ServiceLevel</dd>
+    </dl>
+    <form asp-action="Delete" method="post" class="d-flex gap-2">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-outline-primary" asp-action="Index">Cancel</a>
+    </form>
+</div>

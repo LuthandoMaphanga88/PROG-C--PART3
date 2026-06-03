@@ -29,7 +29,15 @@ public class ExchangeRateService : IExchangeRateService
 
         var normalizedBaseCurrency = baseCurrency.Trim().ToUpperInvariant();
         var url = $"{baseUrl.TrimEnd('/')}/v6/{apiKey}/latest/{normalizedBaseCurrency}";
-        var response = await _httpClient.GetFromJsonAsync<ExchangeRateApiResponse>(url, cancellationToken);
+        ExchangeRateApiResponse? response;
+        try
+        {
+            response = await _httpClient.GetFromJsonAsync<ExchangeRateApiResponse>(url, cancellationToken);
+        }
+        catch (TaskCanceledException ex)
+        {
+            throw new HttpRequestException("Exchange rate request timed out or was canceled.", ex);
+        }
 
         if (response is null || !string.Equals(response.Result, "success", StringComparison.OrdinalIgnoreCase))
         {

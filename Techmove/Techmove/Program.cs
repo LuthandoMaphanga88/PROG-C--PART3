@@ -1,3 +1,4 @@
+using Techmove.Services;
 using Techmove.Services.Api;
 
 namespace Techmove
@@ -11,13 +12,17 @@ namespace Techmove
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<Services.InMemoryUserStore>();
-            builder.Services.AddHttpClient<Services.IExchangeRateService, Services.ExchangeRateService>();
-            builder.Services.AddHttpClient<ITechmoveApiClient, TechmoveApiClient>(client =>
+
+            var apiTimeoutSeconds = builder.Configuration.GetValue("TechmoveApi:TimeoutSeconds", 30);
+            var apiTimeout = TimeSpan.FromSeconds(apiTimeoutSeconds);
+
+            builder.Services.AddHttpClient<Services.IExchangeRateService, Services.ExchangeRateService>(client =>
             {
-                var baseUrl = builder.Configuration["TechmoveApi:BaseUrl"]
-                    ?? throw new InvalidOperationException("TechmoveApi:BaseUrl is not configured.");
-                client.BaseAddress = new Uri(baseUrl);
-            });
+                client.Timeout = apiTimeout;
+            })
+                .ConfigurePrimaryHttpMessageHandler(DevelopmentHttpClientHandler.Create);
+
+            builder.Services.AddTechmoveApiClient(builder.Configuration, builder.Environment);
 
             builder.Services
                 .AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
@@ -29,6 +34,12 @@ namespace Techmove
             builder.Services.AddAuthorization();
 
             var app = builder.Build();
+
+            var apiClientMode = app.Services.GetRequiredService<TechmoveApiClientMode>();
+            app.Logger.LogInformation(
+                "Techmove data source: {Mode} ({BaseUrl})",
+                apiClientMode.Mode,
+                apiClientMode.BaseUrl);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

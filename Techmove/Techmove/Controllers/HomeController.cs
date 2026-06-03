@@ -18,19 +18,28 @@ namespace Techmove.Controllers
 
         public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
-            var clients = await _apiClient.GetClientsAsync(cancellationToken);
-            var contracts = await _apiClient.GetContractsAsync(cancellationToken);
-            var serviceRequests = await _apiClient.GetServiceRequestsAsync(cancellationToken);
-
-            var dashboard = new DashboardViewModel
+            try
             {
-                TotalClients = clients.Count,
-                ActiveContracts = contracts.Count(c => c.Status == "Active"),
-                OpenServiceRequests = serviceRequests.Count(r => r.Status is "Open" or "Pending Approval" or "In Progress"),
-                ExpiringContracts = contracts.Count(c => c.EndDate >= DateTime.Today && c.EndDate <= DateTime.Today.AddDays(30))
-            };
+                var clients = await _apiClient.GetClientsAsync(cancellationToken);
+                var contracts = await _apiClient.GetContractsAsync(cancellationToken);
+                var serviceRequests = await _apiClient.GetServiceRequestsAsync(cancellationToken);
 
-            return View(dashboard);
+                var dashboard = new DashboardViewModel
+                {
+                    TotalClients = clients.Count,
+                    ActiveContracts = contracts.Count(c => c.Status == "Active"),
+                    OpenServiceRequests = serviceRequests.Count(r => r.Status is "Open" or "Pending Approval" or "In Progress"),
+                    ExpiringContracts = contracts.Count(c => c.EndDate >= DateTime.Today && c.EndDate <= DateTime.Today.AddDays(30))
+                };
+
+                return View(dashboard);
+            }
+            catch (HttpRequestException)
+            {
+                TempData["DashboardError"] =
+                    "Dashboard data could not be loaded. Start Techmove.API at https://localhost:7000, then refresh this page.";
+                return View(new DashboardViewModel());
+            }
         }
 
         public IActionResult Privacy()

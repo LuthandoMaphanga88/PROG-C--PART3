@@ -12,6 +12,7 @@
     }
     <form asp-action="Create" method="post" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
         <div class="row g-3">
             <div class="col-md-6">
                 <label class="form-label">Client</label>

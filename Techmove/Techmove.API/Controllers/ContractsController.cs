@@ -135,6 +135,44 @@ public class ContractsController : ControllerBase
         }
     }
 
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ContractDto>> UpdateContract(int id, [FromBody] ContractDto contractDto)
+    {
+        try
+        {
+            if (contractDto.StartDate == default ||
+                contractDto.EndDate == default ||
+                contractDto.EndDate < contractDto.StartDate)
+            {
+                return BadRequest(new { message = "End date must be the same as or after start date." });
+            }
+
+            var contract = await _contractService.UpdateContractAsync(id, contractDto);
+
+            if (contract is null)
+            {
+                _logger.LogWarning("Contract with ID {ContractId} not found for update", id);
+                return NotFound(new { message = "Contract not found" });
+            }
+
+            return Ok(contract);
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogWarning(ex, "Contract update validation failed for {ContractId}", id);
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error updating contract {ContractId}", id);
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new { message = "An error occurred while updating the contract" });
+        }
+    }
+
     /// <summary>
     /// Update contract status (approve or decline).
     /// </summary>
@@ -207,6 +245,35 @@ public class ContractsController : ControllerBase
             _logger.LogError(ex, "Error updating returned agreement for {ContractId}", id);
             return StatusCode(StatusCodes.Status500InternalServerError,
                 new { message = "An error occurred while updating the returned agreement" });
+        }
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> DeleteContract(int id)
+    {
+        try
+        {
+            var deleted = await _contractService.DeleteContractAsync(id);
+
+            if (!deleted)
+            {
+                return NotFound(new { message = "Contract not found" });
+            }
+
+            return NoContent();
+        }
+        catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
+        {
+            _logger.LogWarning(ex, "Contract {ContractId} could not be deleted because related data exists", id);
+            return BadRequest(new { message = "This contract cannot be deleted while related service requests exist." });
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error deleting contract {ContractId}", id);
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new { message = "An error occurred while deleting the contract" });
         }
     }
 }

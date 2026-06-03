@@ -1,0 +1,26 @@
+@model ServiceRequestViewModel
+@{
+    ViewData["Title"] = "Service Request Details";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Service Request Details</h1>
+    <dl class="row mb-0">
+        <dt class="col-sm-3">Request ID</dt>
+        <dd class="col-sm-9">SR-@Model.Id</dd>
+        <dt class="col-sm-3">Contract</dt>
+        <dd class="col-sm-9">@Model.ContractRef</dd>
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+        <dt class="col-sm-3">Cost (USD)</dt>
+        <dd class="col-sm-9">$@Model.CostUsd.ToString("N2")</dd>
+        <dt class="col-sm-3">Cost (ZAR)</dt>
+        <dd class="col-sm-9">R @Model.CostZar.ToString("N2")</dd>
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+    </dl>
+    <div class="mt-4 d-flex gap-2">
+        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-outline-primary" asp-action="Index">Back</a>
+    </div>
+</div>

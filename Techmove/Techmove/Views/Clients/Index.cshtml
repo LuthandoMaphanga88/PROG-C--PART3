@@ -9,6 +9,11 @@
 </div>
 
 <div class="panel-card">
+    @if (TempData["ClientError"] is string error)
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+
     @if (!Model.Any())
     {
         <p class="mb-0">No clients yet. Add your first client to start building live data.</p>
@@ -22,6 +27,7 @@
                 <th>Client Name</th>
                 <th>Contact Details</th>
                 <th>Region</th>
+                <th class="text-end">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +38,13 @@
                 <td>@client.Name</td>
                 <td>@client.ContactDetails</td>
                 <td>@client.Region</td>
+                <td class="text-end">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@client.Id">Details</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@client.Id">Edit</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@client.Id">Delete</a>
+                    </div>
+                </td>
             </tr>
         }
         </tbody>

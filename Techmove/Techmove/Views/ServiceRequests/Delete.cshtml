@@ -1,0 +1,25 @@
+@model ServiceRequestViewModel
+@{
+    ViewData["Title"] = "Delete Service Request";
+}
+
+<div class="panel-card">
+    <h1 class="h3 mb-3">Delete Service Request</h1>
+    <div class="alert alert-warning">
+        Confirm that you want to delete service request SR-@Model.Id.
+    </div>
+    <dl class="row">
+        <dt class="col-sm-3">Contract</dt>
+        <dd class="col-sm-9">@Model.ContractRef</dd>
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">@Model.Status</dd>
+    </dl>
+    <form asp-action="Delete" method="post" class="d-flex gap-2">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-outline-primary" asp-action="Index">Cancel</a>
+    </form>
+</div>

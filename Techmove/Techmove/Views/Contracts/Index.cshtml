@@ -12,6 +12,11 @@
 </div>
 
 <div class="panel-card">
+    @if (TempData["ContractError"] is string error)
+    {
+        <div class="alert alert-danger">@error</div>
+    }
+
     @if (!Model.Any())
     {
         <p class="mb-0">No contracts yet. Create contracts from your own client data.</p>
@@ -28,6 +33,7 @@
                 <th>Service Level</th>
                 <th>Signed Agreement</th>
                 <th>Client Returned Agreement</th>
+                <th class="text-end">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -58,6 +64,13 @@
                     {
                         <span class="text-muted">Not returned yet</span>
                     }
+                </td>
+                <td class="text-end">
+                    <div class="btn-group btn-group-sm" role="group">
+                        <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@contract.Id">Details</a>
+                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@contract.Id">Edit</a>
+                        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@contract.Id">Delete</a>
+                    </div>
                 </td>
             </tr>
         }

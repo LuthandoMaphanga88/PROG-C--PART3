@@ -36,6 +36,13 @@ public class ClientsController : ControllerBase
         return client is null ? NotFound(new { message = "Client not found." }) : Ok(MapToDto(client));
     }
 
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ClientDto>> GetClient(int id)
+    {
+        var client = await _context.Clients.FindAsync(id);
+        return client is null ? NotFound(new { message = "Client not found." }) : Ok(MapToDto(client));
+    }
+
     [HttpPost]
     public async Task<ActionResult<ClientDto>> CreateClient(ClientDto dto)
     {
@@ -90,6 +97,42 @@ public class ClientsController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok(MapToDto(client));
+    }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<ClientDto>> UpdateClient(int id, ClientDto dto)
+    {
+        var client = await _context.Clients.FindAsync(id);
+        if (client is null)
+        {
+            return NotFound(new { message = "Client not found." });
+        }
+
+        ApplyDto(client, dto);
+        await _context.SaveChangesAsync();
+
+        return Ok(MapToDto(client));
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteClient(int id)
+    {
+        var client = await _context.Clients.FindAsync(id);
+        if (client is null)
+        {
+            return NotFound(new { message = "Client not found." });
+        }
+
+        try
+        {
+            _context.Clients.Remove(client);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        catch (DbUpdateException)
+        {
+            return BadRequest(new { message = "This client cannot be deleted while related contracts exist." });
+        }
     }
 
     private static ClientDto MapToDto(Client client)

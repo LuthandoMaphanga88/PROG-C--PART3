@@ -3,6 +3,11 @@
     ViewData["Title"] = "Dashboard";
 }
 
+@if (TempData["DashboardError"] is string dashboardError)
+{
+    <div class="alert alert-warning">@dashboardError</div>
+}
+
 <section class="glms-hero mb-4">
     <h1 class="mb-2">Global Logistics Management System</h1>
     <p class="mb-0">
