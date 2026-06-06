@@ -4,6 +4,8 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <SourceLinkCreate>false</SourceLinkCreate>
+    <EnableSourceLink>false</EnableSourceLink>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +22,10 @@
 
   <ItemGroup>
     <Compile Remove="INTEGRATION_EXAMPLE.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="OpenApi\simple-inventory-api.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

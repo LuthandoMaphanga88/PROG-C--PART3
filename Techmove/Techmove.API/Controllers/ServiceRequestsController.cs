@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Techmove.API.Models;
-using Techmove.Data;
-using Techmove.Models;
+using Techmove.API.Services;
 
 namespace Techmove.API.Controllers;
 
@@ -11,126 +9,59 @@ namespace Techmove.API.Controllers;
 [Produces("application/json")]
 public class ServiceRequestsController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IServiceRequestService _serviceRequestService;
 
-    public ServiceRequestsController(AppDbContext context)
+    public ServiceRequestsController(IServiceRequestService serviceRequestService)
     {
-        _context = context;
+        _serviceRequestService = serviceRequestService;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ServiceRequestDto>>> GetServiceRequests()
     {
-        var requests = await _context.ServiceRequests
-            .OrderByDescending(request => request.CreatedDate)
-            .Select(request => MapToDto(request))
-            .ToListAsync();
-
+        var requests = await _serviceRequestService.GetServiceRequestsAsync();
         return Ok(requests);
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<ServiceRequestDto>> GetServiceRequest(int id)
     {
-        var request = await _context.ServiceRequests.FindAsync(id);
-        return request is null ? NotFound(new { message = "Service request not found." }) : Ok(MapToDto(request));
+        var request = await _serviceRequestService.GetServiceRequestByIdAsync(id);
+        return request is null ? NotFound(new { message = "Service request not found." }) : Ok(request);
     }
 
     [HttpPost]
     public async Task<ActionResult<ServiceRequestDto>> CreateServiceRequest(ServiceRequestDto dto)
     {
-        var contract = await _context.Contracts.FirstOrDefaultAsync(c => c.Id == dto.ContractId);
-        if (contract is null)
+        try
         {
-            return BadRequest(new { message = "Please select a valid contract." });
+            var request = await _serviceRequestService.CreateServiceRequestAsync(dto);
+            return CreatedAtAction(nameof(GetServiceRequest), new { id = request.Id }, request);
         }
-
-        if (contract.Status is "Expired" or "On Hold")
+        catch (InvalidOperationException ex)
         {
-            return BadRequest(new { message = "A service request cannot be created for Expired or On Hold contracts." });
+            return BadRequest(new { message = ex.Message });
         }
-
-        var request = new ServiceRequest
-        {
-            ContractId = contract.Id,
-            ContractRef = string.IsNullOrWhiteSpace(dto.ContractRef)
-                ? $"CT-{contract.Id} - {contract.ClientName} ({contract.Status})"
-                : dto.ContractRef,
-            Description = dto.Description,
-            CostUsd = dto.CostUsd,
-            CostZar = dto.CostZar,
-            Status = dto.Status,
-            CreatedDate = DateTime.UtcNow,
-            ModifiedDate = DateTime.UtcNow
-        };
-
-        _context.ServiceRequests.Add(request);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction(nameof(GetServiceRequests), new { id = request.Id }, MapToDto(request));
     }
 
     [HttpPut("{id:int}")]
     public async Task<ActionResult<ServiceRequestDto>> UpdateServiceRequest(int id, ServiceRequestDto dto)
     {
-        var request = await _context.ServiceRequests.FindAsync(id);
-        if (request is null)
+        try
         {
-            return NotFound(new { message = "Service request not found." });
+            var request = await _serviceRequestService.UpdateServiceRequestAsync(id, dto);
+            return request is null ? NotFound(new { message = "Service request not found." }) : Ok(request);
         }
-
-        var contract = await _context.Contracts.FirstOrDefaultAsync(c => c.Id == dto.ContractId);
-        if (contract is null)
+        catch (InvalidOperationException ex)
         {
-            return BadRequest(new { message = "Please select a valid contract." });
+            return BadRequest(new { message = ex.Message });
         }
-
-        if (contract.Status is "Expired" or "On Hold")
-        {
-            return BadRequest(new { message = "A service request cannot be linked to Expired or On Hold contracts." });
-        }
-
-        request.ContractId = contract.Id;
-        request.ContractRef = string.IsNullOrWhiteSpace(dto.ContractRef)
-            ? $"CT-{contract.Id} - {contract.ClientName} ({contract.Status})"
-            : dto.ContractRef;
-        request.Description = dto.Description;
-        request.CostUsd = dto.CostUsd;
-        request.CostZar = dto.CostZar;
-        request.Status = dto.Status;
-        request.ModifiedDate = DateTime.UtcNow;
-
-        await _context.SaveChangesAsync();
-
-        return Ok(MapToDto(request));
     }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteServiceRequest(int id)
     {
-        var request = await _context.ServiceRequests.FindAsync(id);
-        if (request is null)
-        {
-            return NotFound(new { message = "Service request not found." });
-        }
-
-        _context.ServiceRequests.Remove(request);
-        await _context.SaveChangesAsync();
-
-        return NoContent();
-    }
-
-    private static ServiceRequestDto MapToDto(ServiceRequest request)
-    {
-        return new ServiceRequestDto
-        {
-            Id = request.Id,
-            ContractId = request.ContractId,
-            ContractRef = request.ContractRef,
-            Description = request.Description,
-            CostUsd = request.CostUsd,
-            CostZar = request.CostZar,
-            Status = request.Status
-        };
+        var deleted = await _serviceRequestService.DeleteServiceRequestAsync(id);
+        return deleted ? NoContent() : NotFound(new { message = "Service request not found." });
     }
 }

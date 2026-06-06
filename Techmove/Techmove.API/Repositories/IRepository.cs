@@ -36,6 +36,11 @@ public interface IRepository<T> where T : class
     Task DeleteAsync(T entity);
 
     /// <summary>
+    /// Get a queryable dataset for advanced filtering.
+    /// </summary>
+    IQueryable<T> Query();
+
+    /// <summary>
     /// Save changes to the database.
     /// </summary>
     Task SaveChangesAsync();

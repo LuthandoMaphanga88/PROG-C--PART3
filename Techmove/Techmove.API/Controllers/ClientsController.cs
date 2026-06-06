@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Techmove.API.Models;
+using Techmove.API.Services;
 using Techmove.Data;
 using Techmove.Models;
 
@@ -11,36 +12,32 @@ namespace Techmove.API.Controllers;
 [Produces("application/json")]
 public class ClientsController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IClientService _clientService;
 
-    public ClientsController(AppDbContext context)
+    public ClientsController(IClientService clientService)
     {
-        _context = context;
+        _clientService = clientService;
     }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ClientDto>>> GetClients()
     {
-        var clients = await _context.Clients
-            .OrderBy(client => client.Name)
-            .Select(client => MapToDto(client))
-            .ToListAsync();
-
+        var clients = await _clientService.GetClientsAsync();
         return Ok(clients);
     }
 
     [HttpGet("by-account/{accountUsername}")]
     public async Task<ActionResult<ClientDto>> GetByAccountUsername(string accountUsername)
     {
-        var client = await _context.Clients.FirstOrDefaultAsync(c => c.AccountUsername == accountUsername);
-        return client is null ? NotFound(new { message = "Client not found." }) : Ok(MapToDto(client));
+        var client = await _clientService.GetClientByAccountUsernameAsync(accountUsername);
+        return client is null ? NotFound(new { message = "Client not found." }) : Ok(client);
     }
 
     [HttpGet("{id:int}")]
     public async Task<ActionResult<ClientDto>> GetClient(int id)
     {
-        var client = await _context.Clients.FindAsync(id);
-        return client is null ? NotFound(new { message = "Client not found." }) : Ok(MapToDto(client));
+        var client = await _clientService.GetClientByIdAsync(id);
+        return client is null ? NotFound(new { message = "Client not found." }) : Ok(client);
     }
 
     [HttpPost]
@@ -51,111 +48,35 @@ public class ClientsController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var existingClient = !string.IsNullOrWhiteSpace(dto.AccountUsername)
-            ? await _context.Clients.FirstOrDefaultAsync(c => c.AccountUsername == dto.AccountUsername)
-            : null;
-
-        if (existingClient is not null)
-        {
-            ApplyDto(existingClient, dto);
-            await _context.SaveChangesAsync();
-            return Ok(MapToDto(existingClient));
-        }
-
-        var client = new Client
-        {
-            AccountUsername = dto.AccountUsername,
-            Name = dto.Name,
-            ContactDetails = dto.ContactDetails,
-            Region = dto.Region,
-            CreatedDate = DateTime.UtcNow,
-            ModifiedDate = DateTime.UtcNow
-        };
-
-        _context.Clients.Add(client);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction(nameof(GetByAccountUsername), new { accountUsername = client.AccountUsername }, MapToDto(client));
+        var client = await _clientService.CreateClientAsync(dto);
+        return CreatedAtAction(nameof(GetByAccountUsername), new { accountUsername = client.AccountUsername }, client);
     }
 
     [HttpPut("by-account/{accountUsername}")]
     public async Task<ActionResult<ClientDto>> UpsertClientProfile(string accountUsername, ClientDto dto)
     {
-        var client = await _context.Clients.FirstOrDefaultAsync(c => c.AccountUsername == accountUsername);
-        if (client is null)
-        {
-            client = new Client
-            {
-                AccountUsername = accountUsername,
-                CreatedDate = DateTime.UtcNow
-            };
-            _context.Clients.Add(client);
-        }
-
-        ApplyDto(client, dto);
-        client.AccountUsername = accountUsername;
-        await _context.SaveChangesAsync();
-
-        return Ok(MapToDto(client));
+        var client = await _clientService.UpsertClientProfileAsync(accountUsername, dto);
+        return Ok(client);
     }
 
     [HttpPut("{id:int}")]
     public async Task<ActionResult<ClientDto>> UpdateClient(int id, ClientDto dto)
     {
-        var client = await _context.Clients.FindAsync(id);
-        if (client is null)
-        {
-            return NotFound(new { message = "Client not found." });
-        }
-
-        ApplyDto(client, dto);
-        await _context.SaveChangesAsync();
-
-        return Ok(MapToDto(client));
+        var client = await _clientService.UpdateClientAsync(id, dto);
+        return client is null ? NotFound(new { message = "Client not found." }) : Ok(client);
     }
 
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteClient(int id)
     {
-        var client = await _context.Clients.FindAsync(id);
-        if (client is null)
-        {
-            return NotFound(new { message = "Client not found." });
-        }
-
         try
         {
-            _context.Clients.Remove(client);
-            await _context.SaveChangesAsync();
-            return NoContent();
+            var deleted = await _clientService.DeleteClientAsync(id);
+            return deleted ? NoContent() : NotFound(new { message = "Client not found." });
         }
         catch (DbUpdateException)
         {
             return BadRequest(new { message = "This client cannot be deleted while related contracts exist." });
         }
-    }
-
-    private static ClientDto MapToDto(Client client)
-    {
-        return new ClientDto
-        {
-            Id = client.Id,
-            AccountUsername = client.AccountUsername,
-            Name = client.Name,
-            ContactDetails = client.ContactDetails,
-            Region = client.Region
-        };
-    }
-
-    private static void ApplyDto(Client client, ClientDto dto)
-    {
-        client.Name = dto.Name;
-        client.ContactDetails = dto.ContactDetails;
-        client.Region = dto.Region;
-        if (!string.IsNullOrWhiteSpace(dto.AccountUsername))
-        {
-            client.AccountUsername = dto.AccountUsername;
-        }
-        client.ModifiedDate = DateTime.UtcNow;
     }
 }

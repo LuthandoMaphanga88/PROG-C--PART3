@@ -11,6 +11,7 @@ namespace Techmove
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddSwaggerGen();
             builder.Services.AddSingleton<Services.InMemoryUserStore>();
 
             var apiTimeoutSeconds = builder.Configuration.GetValue("TechmoveApi:TimeoutSeconds", 30);
@@ -48,6 +49,11 @@ namespace Techmove
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            else
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
             app.UseHttpsRedirection();
             app.UseRouting();
@@ -55,11 +61,21 @@ namespace Techmove
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapStaticAssets();
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
-                .WithStaticAssets();
+            var staticAssetsManifestPath = Path.Combine(app.Environment.WebRootPath ?? "", "..", "Techmove.staticwebassets.endpoints.json");
+            if (File.Exists(staticAssetsManifestPath))
+            {
+                app.MapStaticAssets();
+                app.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}")
+                    .WithStaticAssets();
+            }
+            else
+            {
+                app.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            }
 
             app.Run();
         }

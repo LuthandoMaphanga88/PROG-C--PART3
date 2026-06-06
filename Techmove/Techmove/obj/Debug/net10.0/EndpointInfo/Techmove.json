@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Techmove",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/exchange-rates": {
+      "get": {
+        "tags": [
+          "ExchangeRates"
+        ],
+        "parameters": [
+          {
+            "name": "baseCurrency",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "USD"
+            }
+          },
+          {
+            "name": "targets",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "EUR,GBP,CAD"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}
