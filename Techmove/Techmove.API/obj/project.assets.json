@@ -1051,6 +1051,7 @@
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "6.24.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "compile": {
@@ -2792,6 +2793,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0",
       "Microsoft.Extensions.DependencyInjection >= 10.0.8",
+      "Microsoft.IdentityModel.JsonWebTokens >= 6.24.0",
       "Swashbuckle.AspNetCore >= 6.5.0",
       "Techmove >= 1.0.0"
     ]
@@ -2867,6 +2869,10 @@
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[10.0.8, )"
+          },
+          "Microsoft.IdentityModel.JsonWebTokens": {
+            "target": "Package",
+            "version": "[6.24.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

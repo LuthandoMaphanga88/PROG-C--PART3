@@ -131,7 +131,6 @@ C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-Luthan
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\scopedcss\bundle\Techmove.styles.css
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\scopedcss\projectbundle\Techmove.bundle.scp.css
-C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\curllee0kz-{0}-j5vma02ict-j5vma02ict.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\xi4xtr5b7x-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\ore6pc2uc8-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\ut323tc646-{0}-t1cqhe9u97-t1cqhe9u97.gz
@@ -192,8 +191,6 @@ C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-Luthan
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\09v0v7z347-{0}-9vr69e8ynj-9vr69e8ynj.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\j9mwgpodd7-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\pp0lbzi19j-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\8s7j6dhz7u-{0}-sdv353kkfi-sdv353kkfi.gz
-C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\73mb58stng-{0}-sdv353kkfi-sdv353kkfi.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\staticwebassets.development.json
@@ -205,4 +202,10 @@ C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-Luthan
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\Techmove.pdb
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\Techmove.genruntimeconfig.cache
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\ref\Techmove.dll
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\curllee0kz-{0}-lts9kj6nxp-lts9kj6nxp.gz
+c:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\8s7j6dhz7u-{0}-7nav25r7ph-7nav25r7ph.gz
+c:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\73mb58stng-{0}-7nav25r7ph-7nav25r7ph.gz
+c:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\xbyd2xan6h-{0}-ttoennlpdd-ttoennlpdd.gz
+c:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\fdht1zvff7-{0}-c0y5o5zc1g-c0y5o5zc1g.gz
+c:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\compressed\fqejgcf6lr-{0}-71anukzeeq-71anukzeeq.gz
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

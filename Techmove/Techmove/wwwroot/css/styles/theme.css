@@ -1,0 +1,17 @@
+:root {
+  --glms-navy: #0a3568;
+  --glms-blue: #1565c0;
+  --glms-blue-hover: #0d47a1;
+  --glms-blue-tint: #e8f1fa;
+  --glms-white: #ffffff;
+  --glms-bg: #f4f7fb;
+  --glms-surface: #ffffff;
+  --glms-border: #d5e0ec;
+  --glms-border-strong: #b8c9dc;
+  --glms-text: #1c2a3a;
+  --glms-text-muted: #5f7083;
+  --glms-radius: 8px;
+  --glms-shadow: 0 2px 8px rgba(10, 53, 104, 0.08);
+  --glms-font: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --glms-max-width: 1140px;
+}

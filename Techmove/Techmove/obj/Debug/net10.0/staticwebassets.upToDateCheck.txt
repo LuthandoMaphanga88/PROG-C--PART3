@@ -1,4 +1,7 @@
 wwwroot\css\site.css
+wwwroot\css\styles\components.css
+wwwroot\css\styles\layout.css
+wwwroot\css\styles\theme.css
 wwwroot\favicon.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -66,6 +69,7 @@ wwwroot\uploads\14a55a9184a540609468ca88a0e90c63.pdf
 wwwroot\uploads\461eb3a5-a2cf-418b-920b-b55fbd726f78-ICE Task 3.pdf
 wwwroot\uploads\4a55fe6e-d7d2-4846-8281-5fdda4f5ad84-ICE Task 3.pdf
 wwwroot\uploads\4c75af20-40c8-4b52-91ab-a6e571a037c9-ICE Task 3.pdf
+wwwroot\uploads\540dd87a4143498699514bc06c3d2fd1.pdf
 wwwroot\uploads\62911e97aca74ed9b3fdd1a6a5f2765a.pdf
 wwwroot\uploads\79c32ffa-8e2e-4baf-a599-2db2d753fc06-ICE Task 3.pdf
 wwwroot\uploads\79da24b4-dcb7-4b8f-8fef-e5983804d66d-ICE Task 3.pdf
@@ -81,6 +85,9 @@ wwwroot\uploads\eb242d14-3328-4014-a78b-cba5fcda2f96-ICE Task 3.pdf
 wwwroot\uploads\ecf9dab3200b4a56818f3b6bfcb28f24.pdf
 wwwroot\uploads\f59c3357-467e-4938-a2b7-6b2a2608f209-ICE Task 3.pdf
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\css\site.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\css\styles\components.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\css\styles\layout.css
+C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\css\styles\theme.css
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\favicon.ico
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\js\site.js
 C:\Users\lab_services_student\source\repos\EMGPPT\prog7311-g3-2026-part-2-LuthandoMaphanga88\Techmove\Techmove\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css

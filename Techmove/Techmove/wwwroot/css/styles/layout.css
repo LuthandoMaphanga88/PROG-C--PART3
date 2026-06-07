@@ -1,0 +1,152 @@
+html {
+  font-size: 14px;
+  min-height: 100%;
+}
+
+body.glms-page {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--glms-font);
+  color: var(--glms-text);
+  background-color: var(--glms-bg);
+  line-height: 1.5;
+}
+
+.glms-header {
+  background: var(--glms-blue);
+  border-bottom: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.glms-navbar {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.glms-navbar .container-fluid {
+  max-width: var(--glms-max-width);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.glms-navbar .navbar-brand {
+  color: var(--glms-white) !important;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.glms-navbar .navbar-nav {
+  gap: 0.15rem;
+}
+
+.glms-navbar .nav-link,
+.glms-navbar .btn-link.nav-link {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.45rem 0.75rem !important;
+  border-radius: 4px;
+}
+
+.glms-navbar .nav-link:hover,
+.glms-navbar .btn-link.nav-link:hover {
+  color: var(--glms-white) !important;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.glms-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.glms-navbar .navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
+
+.glms-user-label {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.glms-shell {
+  max-width: var(--glms-max-width);
+}
+
+.glms-main {
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.glms-footer {
+  background: var(--glms-white);
+  border-top: 1px solid var(--glms-border) !important;
+  color: var(--glms-text-muted);
+  font-size: 0.85rem;
+  padding: 0.9rem 0;
+  position: static !important;
+  width: 100%;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.glms-footer .container {
+  max-width: var(--glms-max-width);
+}
+
+.glms-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.glms-page-header h1,
+.glms-page-header .h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--glms-navy);
+  margin: 0;
+}
+
+.glms-page-header .glms-page-subtitle {
+  font-size: 0.88rem;
+  color: var(--glms-text-muted);
+  margin: 0.15rem 0 0;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  color: var(--glms-navy);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-muted {
+  color: var(--glms-text-muted) !important;
+}
+
+a {
+  color: var(--glms-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--glms-blue-hover);
+}
+
+.glms-login-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  min-height: 50vh;
+}
+
+@media (max-width: 767.98px) {
+  .glms-main {
+    padding-top: 1rem;
+  }
+}
