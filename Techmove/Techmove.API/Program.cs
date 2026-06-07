@@ -85,21 +85,24 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-try
+if (!app.Environment.IsEnvironment("Testing"))
 {
-    app.InitializeDatabase();
-}
-catch (Exception ex)
-{
-    var logger = app.Services.GetRequiredService<ILogger<Program>>();
-    logger.LogError(ex, "Database initialization failed.");
-
-    if (!app.Environment.IsDevelopment())
+    try
     {
-        throw;
+        app.InitializeDatabase();
     }
+    catch (Exception ex)
+    {
+        var logger = app.Services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Database initialization failed.");
 
-    logger.LogWarning("Continuing startup in Development without a ready database.");
+        if (!app.Environment.IsDevelopment())
+        {
+            throw;
+        }
+
+        logger.LogWarning("Continuing startup in Development without a ready database.");
+    }
 }
 
 app.UseExceptionHandler(errorApp =>
@@ -131,15 +134,12 @@ app.UseExceptionHandler(errorApp =>
     });
 });
 
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Techmove Contracts API v1");
-        options.SwaggerEndpoint("/openapi/simple-inventory.json", "Simple Inventory API v1");
-    });
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Techmove Contracts API v1");
+    options.SwaggerEndpoint("/openapi/simple-inventory.json", "Simple Inventory API v1");
+});
 
 app.UseHttpsRedirection();
 app.UseCors("AllowMvcApp");
@@ -148,11 +148,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.MapGet("/", () => Results.Redirect("/swagger"))
+    .ExcludeFromDescription();
+
 if (app.Environment.IsDevelopment())
 {
-    app.MapGet("/", () => Results.Redirect("/swagger"))
-        .ExcludeFromDescription();
-
     app.MapGet("/api/auth/token", (IConfiguration configuration) =>
         Results.Ok(new
         {
@@ -164,14 +164,15 @@ if (app.Environment.IsDevelopment())
         .WithSummary("Generates a development JWT for Swagger testing.")
         .WithDescription("Use this development-only token with the Swagger Authorize button to test secured API endpoints.");
 
-    app.MapGet("/openapi/simple-inventory.json", (IWebHostEnvironment environment) =>
-    {
-        var specPath = Path.Combine(environment.ContentRootPath, "OpenApi", "simple-inventory-api.json");
-        return File.Exists(specPath)
-            ? Results.File(specPath, "application/json")
-            : Results.NotFound(new { message = "OpenAPI specification file was not found." });
-    });
 }
+
+app.MapGet("/openapi/simple-inventory.json", (IWebHostEnvironment environment) =>
+{
+    var specPath = Path.Combine(environment.ContentRootPath, "OpenApi", "simple-inventory-api.json");
+    return File.Exists(specPath)
+        ? Results.File(specPath, "application/json")
+        : Results.NotFound(new { message = "OpenAPI specification file was not found." });
+});
 
 await app.RunAsync();
 

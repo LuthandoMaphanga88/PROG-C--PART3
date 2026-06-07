@@ -17,7 +17,7 @@ public static class TechmoveApiServiceCollectionExtensions
 
         var useHttpClient = preferHttp &&
                             !forceInMemory &&
-                            TechmoveApiHealthChecker.IsReachable(baseUrl);
+                            (!environment.IsDevelopment() || TechmoveApiHealthChecker.IsReachable(baseUrl));
 
         if (useHttpClient)
         {

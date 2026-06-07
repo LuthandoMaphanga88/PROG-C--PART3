@@ -1,2 +1,5 @@
 <Solution>
+  <Project Path="Techmove/Techmove/Techmove.csproj" />
+  <Project Path="Techmove/Techmove.API/Techmove.API.csproj" />
+  <Project Path="Techmove/Techmove.Tests/Techmove.Tests.csproj" />
 </Solution>
